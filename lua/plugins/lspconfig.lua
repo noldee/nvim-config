@@ -77,6 +77,19 @@ return {
 				jdtls = {},
 				marksman = {},
 				astro = {},
+				html = {},
+				emmet_language_server = {
+					filetypes = {
+						"html",
+						"css",
+						"astro",
+						"javascript",
+						"javascriptreact",
+						"typescript",
+						"typescriptreact",
+						"vue",
+					},
+				},
 			}
 			for server, config in pairs(servers) do
 				config.capabilities = capabilities
