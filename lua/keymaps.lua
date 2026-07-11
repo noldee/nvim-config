@@ -28,11 +28,16 @@ vim.keymap.set("n", "<leader>x", ":BufferClose<CR>", { desc = "Close buffer" })
 vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Toggle comment" })
 
 -------------------------------------------------
+-- TEXT SELECTION
+-------------------------------------------------
+vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select all" })
+
+-------------------------------------------------
 -- TOGGLETERM
 -------------------------------------------------
 vim.keymap.set("n", "<leader>tr", ":ToggleTerm<CR>", { desc = "Toggle terminal (default)" })
 vim.keymap.set("n", "<leader>ts", ":ToggleTerm direction=horizontal<CR>", { desc = "Terminal horizontal" })
-vim.keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=80<CR>", { desc = "Terminal vertical" })
+vim.keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=88<CR>", { desc = "Terminal vertical" })
 vim.keymap.set("n", "<leader>tf", ":ToggleTerm direction=float<CR>", { desc = "Terminal flotante" })
 
 -- Terminales numeradas (independientes entre sí)
@@ -40,15 +45,16 @@ vim.keymap.set("n", "<leader>t1", ":1ToggleTerm<CR>", { desc = "Terminal 1" })
 vim.keymap.set("n", "<leader>t2", ":2ToggleTerm<CR>", { desc = "Terminal 2" })
 vim.keymap.set("n", "<leader>t3", ":3ToggleTerm<CR>", { desc = "Terminal 3" })
 
--- Keymaps dentro del modo terminal
-function _G.set_terminal_keymaps()
-	local opts = { buffer = 0 }
-	vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
-	vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
-	vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
-	vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
-	vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
-	vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
-end
-
-vim.cmd("autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()")
+-- Keymaps dentro del modo terminal (se aplican al buffer correcto automáticamente)
+vim.api.nvim_create_autocmd("TermOpen", {
+	pattern = "term://*toggleterm#*",
+	callback = function()
+		local opts = { buffer = 0 } -- 👈 0 = buffer actual, el que se acaba de abrir
+		vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+		vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
+		vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
+		vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
+		vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
+		vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
+	end,
+})
