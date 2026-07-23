@@ -48,4 +48,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("kanso")

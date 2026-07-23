@@ -4,13 +4,13 @@ return {
 	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter").setup()
-
 		require("nvim-treesitter").install({
 			"c",
 			"html",
 			"css",
 			"lua",
 			"typescript",
+			"tsx", -- 👈 parser separado, necesario para .tsx (JSX dentro de TS)
 			"javascript",
 			"markdown",
 			"markdown_inline",
@@ -23,7 +23,9 @@ return {
 				"css",
 				"lua",
 				"typescript",
+				"typescriptreact", -- 👈 filetype real de .tsx
 				"javascript",
+				"javascriptreact", -- 👈 filetype real de .jsx
 				"markdown",
 			},
 			callback = function()
