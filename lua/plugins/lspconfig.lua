@@ -74,7 +74,6 @@ return {
 					},
 				},
 				tailwindcss = {},
-				jdtls = {},
 				marksman = {},
 				astro = {},
 				html = {},

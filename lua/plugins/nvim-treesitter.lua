@@ -14,6 +14,7 @@ return {
 			"javascript",
 			"markdown",
 			"markdown_inline",
+			"java",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
