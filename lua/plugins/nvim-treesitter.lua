@@ -10,13 +10,17 @@ return {
 			"css",
 			"lua",
 			"typescript",
-			"tsx", -- 👈 parser separado, necesario para .tsx (JSX dentro de TS)
+			"tsx",
 			"javascript",
 			"markdown",
 			"markdown_inline",
 			"java",
+			"svelte",
+			"astro",
+			"go",
+			"bash",
+			"json",
 		})
-
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = {
 				"c",
@@ -24,10 +28,15 @@ return {
 				"css",
 				"lua",
 				"typescript",
-				"typescriptreact", -- 👈 filetype real de .tsx
+				"typescriptreact",
 				"javascript",
-				"javascriptreact", -- 👈 filetype real de .jsx
+				"javascriptreact",
 				"markdown",
+				"svelte",
+				"astro",
+				"go",
+				"bash",
+				"json",
 			},
 			callback = function()
 				vim.treesitter.start()
