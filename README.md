@@ -1,6 +1,7 @@
 # 💤 My Neovim Config
 
-Mi configuración personal de Neovim, armada desde cero con `lazy.nvim` como gestor de plugins.
+My personal Neovim configuration, built from scratch with `lazy.nvim` as the plugin manager.
+
 
 ## 📸 Screenshots
 
@@ -8,72 +9,73 @@ Mi configuración personal de Neovim, armada desde cero con `lazy.nvim` como ges
 
 ![Dashboard](assets/dashboard.png)
 
-### Editor / LSP en acción
+### Editor/LSP in action
 
 ![Editor](assets/editor.png)
 
-## ✨ Features
+## ✨Features
 
-- **LSP** completo vía `nvim-lspconfig` + `mason.nvim` (autocompletado, diagnósticos, inlay hints, go-to-definition)
-- **Treesitter** (rama `main`, API moderna) para syntax highlighting
-- **Formateo automático** al guardar con `conform.nvim` + Prettier/Stylua/rustfmt/clang-format
-- **Autocompletado** con `nvim-cmp` + snippets estilo VS Code (`LuaSnip` + `friendly-snippets`)
-- **Dashboard** de inicio con `snacks.nvim` (recent files, projects, restore session)
-- **Explorador de archivos**: `neo-tree.nvim`
-- **Fuzzy finder**: `telescope.nvim`
-- **Buffers en pestañas**: `barbar.nvim`
-- **Terminal integrada** con múltiples instancias: `toggleterm.nvim`
-- **Restauración de sesiones**: `persistence.nvim`
-- **Notificaciones**: `nvim-notify`
-- **Íconos estilo Material**: `DaikyXendo/nvim-material-icon`
-- **Soporte para Pug/Jade**: `vim-pug`
-- **TODO highlighting**: `todo-comments.nvim`
+- Complete **LSP** via `nvim-lspconfig` + `mason.nvim` (autocompletion, diagnostics, inlay hints, go-to-definition)
+- **Treesitter** (`main` branch, modern API) for syntax highlighting
+- **Auto format** when saving with `conform.nvim` + Prettier/Stylua/rustfmt/clang-format
+- **Autocompletion** with `nvim-cmp` + VS Code style snippets (`LuaSnip` + `friendly-snippets`)
+- Startup **Dashboard** with `snacks.nvim` (recent files, projects, restore session)
+- **File Explorer**: `neo-tree.nvim`
+- **Fuzzy Finder**: `telescope.nvim`
+- **Tab Buffers**: `barbar.nvim`
+- **Integrated Terminal** with multiple instances: `toggleterm.nvim`
+- **Session Restore**: `persistence.nvim`
+- **Notifications**: `nvim-notify`
+- **Material Style Icons**: `DaikyXendo/nvim-material-icon`
+- **Pug/Jade Support**: `vim-pug`
+- **TODO Highlighting**: `todo-comments.nvim`
 - **Statusline**: `nvim-lualine`
 
-### Lenguajes soportados (LSP + formateo)
+### Supported Languages ​​(LSP + Formatting)
 
-| Lenguaje                        | LSP                     | Formatter      |
+| Language | LSP | Formatter |
+
 | ------------------------------- | ----------------------- | -------------- |
-| Lua                             | `lua_ls`                | `stylua`       |
-| TypeScript / JavaScript / React | `vtsls`                 | `prettier`     |
-| Rust                            | `rust_analyzer`         | `rustfmt`      |
-| C / C++                         | `clangd`                | `clang-format` |
-| Java                            | `jdtls`                 | (LSP fallback) |
-| Astro                           | `astro`                 | `prettier`     |
-| Tailwind CSS (v3 y v4)          | `tailwindcss`           | —              |
-| Markdown                        | `marksman`              | `prettier`     |
-| HTML/CSS/JSX/TSX (Emmet)        | `emmet_language_server` | —              |
+| Lua | `lua_ls` | `stylua` |
+| TypeScript/JavaScript/React | `vtsls` | `prettier` |
+| Rust | `rust_analyzer` | `rustfmt` |
+| C/C++ | `clangd` | `clang-format` |
+| Java | `jdtls` | (LSP fallback) |
+| Astro | `astro` | `prettier` |
+| Tailwind CSS (v3 and v4) | `tailwindcss` | — |
+| Markdown | `marksman` | `prettier` |
+| HTML/CSS/JSX/TSX (Emmet) | `emmet_language_server` | — |
 
-## 📋 Prerrequisitos
+## 📋 Prerequisites
 
-Antes de clonar esta config en una máquina nueva (probado en **Linux Mint / Ubuntu**), instala:
+Before cloning this config to a new machine (tested on **Linux Mint / Ubuntu**), install:
 
 ```bash
-# Neovim (versión 0.11+ recomendado)
+# Neovim (version 0.11+ recommended)
 sudo apt update
 sudo apt install neovim
 
 # Git
 sudo apt install git
 
-# Compilador de C (necesario para compilar parsers de treesitter y algunos plugins nativos)
+# C Compiler (required to compile Treesitter parsers and some native plugins)
 sudo apt install build-essential
 
-# Node.js (necesario para varios LSPs instalados vía Mason)
+# Node.js (required for several LSPs installed via Mason)
 sudo apt install nodejs npm
 
-# ripgrep y fd (necesarios para Telescope: live_grep y find_files)
+# ripgrep and fd (required for Telescope: live_grep and find_files)
 sudo apt install ripgrep fd-find
 
-# unzip (para instalar Nerd Fonts manualmente)
+# unzip (to manually install Nerd Fonts)
 sudo apt install unzip
 ```
 
 ### Nerd Font
 
-Esta config usa iconos que requieren **cualquier [Nerd Font](https://www.nerdfonts.com/font-downloads)** instalada y seleccionada en tu terminal (Kitty, Alacritty, GNOME Terminal, etc.) — elige la que más te guste, cualquiera de las que ofrece el proyecto Nerd Fonts funciona (JetBrainsMono, Hack, CascadiaCode, etc.). Yo uso **FiraCode Nerd Font**.
+This The configuration uses icons that require any Nerd Font installed and selected in your terminal (Kitty, Alacritty, GNOME Terminal, etc.) — choose whichever you like; any of the fonts offered by the Nerd Fonts project will work (JetBrainsMono, Hack, CascadiaCode, etc.). I use FiraCode Nerd Font.
 
-Ejemplo de instalación (cambia `FiraCode` por la fuente que prefieras):
+Example installation (replace `FiraCode` with your preferred font):
 
 ```bash
 mkdir -p ~/.local/share/fonts/FiraCode
@@ -83,97 +85,76 @@ unzip -o FiraCode.zip -d ~/.local/share/fonts/FiraCode
 fc-cache -fv
 ```
 
-Luego selecciona esa fuente **"... Nerd Font"** en la configuración de fuente de tu terminal.
+Then select that font **"... Nerd Font"** in your terminal's font settings.
 
-## 🚀 Instalación
 
-1. Haz backup de tu config actual si ya tienes una:
+````````````````````````````````````````````````````````````````````````````````````
+`
 
-   ```bash
-   mv ~/.config/nvim ~/.config/nvim.bak
-   ```
+Then select that font, `**"... Nerd Font```, in your terminal's font settings.
 
-2. Clona este repo:
+``````````````````````````````````````````````````
 
-   ```bash
-   git clone https://github.com/noldee/nvim-config.git ~/.config/nvim
-   ```
+` ... ## 🚀 Installation
 
-3. Abre Neovim:
+1. Back up your current config if you already have one:
 
-   ```bash
-   nvim
-   ```
+``bash
+mv ~/.config/nvim ~/.config/nvim.bak
+```
 
-   La primera vez, `lazy.nvim` se bootstrapea solo y comienza a instalar todos los plugins automáticamente. Espera a que termine (puede tardar uno o dos minutos).
+2. Clone this repo:
 
-4. Cierra y vuelve a abrir Neovim, y corre:
+``bash
+git clone https://github.com/noldee/nvim-config.git ~/.config/nvim
+```
 
-   ```
-   :Mason
-   ```
+3. Open Neovim:
 
-   para confirmar que los LSPs/formatters se están instalando (Mason los instala automáticamente la primera vez, según lo declarado en `lspconfig.lua`).
+``bash
+nvim
+```
 
-5. Actualiza los parsers de treesitter manualmente por si acaso:
+The first time, `lazy.nvim` will bootstrap itself and begin installing all plugins automatically. Wait for it to finish (this may take a minute or two).
 
-   ```
-   :TSUpdate
-   ```
+4. Close and reopen Neovim, and run:
 
-6. Verifica que todo esté sano:
-   ```
-   :checkhealth
-   ```
+``
 
-## ⌨️ Keymaps principales
+:Mason
+```
+
+to confirm that the LSPs/formatters are being installed (Mason installs them automatically the first time, as declared in `lspconfig.lua`).
+
+5. Update the treesitter parsers manually, just in case:
+
+``
+
+:TSUpdate
+```
+
+6. Verify that everything is healthy:
+```
+
+:checkhealth
+```
+
+## ⌨️ Main Keymaps
 
 > Leader key: `<Space>`
 
-| Atajo                                      | Acción                                    |
+| Shortcut | Action |
+
 | ------------------------------------------ | ----------------------------------------- |
-| `<C-n>`                                    | Toggle explorador de archivos (Neo-tree)  |
-| `<leader>e`                                | Focus explorador de archivos              |
-| `<leader>ff`                               | Buscar archivos (Telescope)               |
-| `<leader>fw`                               | Buscar texto (live grep)                  |
-| `<leader>of`                               | Archivos recientes                        |
-| `<leader>fc`                               | Cambiar colorscheme                       |
-| `<tab>` / `<S-tab>`                        | Buffer siguiente / anterior               |
-| `<leader>x`                                | Cerrar buffer                             |
-| `<leader>/`                                | Comentar línea                            |
-| `<C-a>`                                    | Seleccionar todo                          |
-| `<leader>tr`                               | Toggle terminal (default)                 |
-| `<leader>ts` / `<leader>tv` / `<leader>tf` | Terminal horizontal / vertical / flotante |
-| `<leader>t1` `<leader>t2` `<leader>t3`     | Terminales numeradas independientes       |
 
-## 🛠️ Troubleshooting
+`<C-n>` | Toggle file explorer (Neo-tree) |
 
-- **Un plugin no cargó / quedó a medias**: borra su carpeta y reinstala
+`<leader>e` | Focus file explorer |
 
-  ```bash
-  rm -rf ~/.local/share/nvim/lazy/<nombre-del-plugin>
-  ```
+`<leader>ff` | Search files (Telescope) |
 
-  y luego `:Lazy sync` dentro de Neovim.
+`<leader>fw` | Search text (live grep) |
 
-- **LSP no arranca en un proyecto**: revisa con
+`<leader>of` | Recent files |
 
-  ```
-  :lua print(vim.inspect(vim.lsp.get_clients({bufnr = 0})))
-  ```
-
-  para confirmar si el cliente está conectado al buffer.
-
-- **Cambios en config no se aplican**: corre `:Lazy sync` o reinicia Neovim completo.
-
-- **Volver a un estado anterior si algo se rompe**:
-  ```bash
-  cd ~/.config/nvim
-  git status
-  git restore .          # descarta cambios no commiteados
-  git reset --hard <hash>  # vuelve a un commit específico (revisa con git log --oneline)
-  ```
-
-## 📄 Licencia
-
-Uso personal, siéntete libre de tomar ideas de aquí para tu propia config.
+`<leader>fc`
