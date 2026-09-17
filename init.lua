@@ -1,6 +1,6 @@
 require("keymaps")
 require("preferences")
-
+require("config.options")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -47,5 +47,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 	end,
 })
-
-vim.cmd.colorscheme("kanso")

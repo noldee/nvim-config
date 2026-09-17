@@ -22,7 +22,7 @@ vim.keymap.set("n", "<tab>", ":BufferNext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<S-tab>", ":BufferPrevious<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<leader>x", ":BufferClose<CR>", { desc = "Close buffer" })
 
--------------------------------------------------
+------------------------------------------------
 -- COMMENTS
 -------------------------------------------------
 vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Toggle comment" })

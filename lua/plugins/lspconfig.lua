@@ -49,15 +49,40 @@ return {
 				})[1] ~= nil
 			end
 
+			-- ✅ Configuración MODERADA de inlay hints (estilo LazyVim)
+			local ts_inlay_hints = {
+				includeInlayParameterNameHints = "literals", -- solo parámetros literales
+				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = false, -- ❌ sin tipos de variables (menos ruido)
+				includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = false, -- ❌ sin tipo de retorno
+				includeInlayEnumMemberValueHints = true,
+			}
+
 			local servers = {
 				lua_ls = {
 					settings = {
 						Lua = {
+							runtime = {
+								version = "LuaJIT",
+								path = { "lua/?.lua", "lua/?/init.lua" },
+							},
+							workspace = {
+								checkThirdParty = false,
+								library = {
+									vim.env.VIMRUNTIME, -- ✅ runtime de Neovim
+									vim.fn.expand("~/.config/nvim"), -- ✅ tu propia config
+								},
+							},
 							diagnostics = { globals = { "vim" } },
 							hint = { enable = true },
+							telemetry = { enable = false },
 						},
 					},
 				},
+
 				clangd = {
 					cmd = { "clangd", "--inlay-hints", "--header-insertion=iwyu" },
 				},
@@ -82,26 +107,8 @@ return {
 						"typescriptreact",
 					},
 					settings = {
-						typescript = {
-							inlayHints = {
-								parameterNames = { enabled = "all" },
-								parameterTypes = { enabled = true },
-								variableTypes = { enabled = true },
-								propertyDeclarationTypes = { enabled = true },
-								functionLikeReturnTypes = { enabled = true },
-								enumMemberValues = { enabled = true },
-							},
-						},
-						javascript = {
-							inlayHints = {
-								parameterNames = { enabled = "all" },
-								parameterTypes = { enabled = true },
-								variableTypes = { enabled = true },
-								propertyDeclarationTypes = { enabled = true },
-								functionLikeReturnTypes = { enabled = true },
-								enumMemberValues = { enabled = true },
-							},
-						},
+						typescript = { inlayHints = ts_inlay_hints },
+						javascript = { inlayHints = ts_inlay_hints },
 					},
 					on_new_config = function(config, root_dir)
 						-- si hay deno.json en el root, no arranques vtsls

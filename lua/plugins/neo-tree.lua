@@ -10,9 +10,10 @@ return {
 		require("neo-tree").setup({
 			filesystem = {
 				filtered_items = {
-					visible = true, -- Muestra los archivos filtrados de forma tenue
-					hide_dotfiles = false, -- Evita que se oculten los archivos que inician con punto (.)
-					hide_gitignored = false, -- Evita que se oculten los archivos del .gitignore (como .env)
+					visible = false, -- Hide "filtered" items
+					hide_dotfiles = false, -- Show dotfiles (.env, .gitignore, etc.)
+					hide_gitignored = true, -- ✅ Respect .gitignore
+					never_show = { ".git" }, -- ✅ Never show .git
 				},
 			},
 		})
