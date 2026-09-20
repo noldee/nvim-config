@@ -6,14 +6,22 @@ return {
 		"MunifTanjim/nui.nvim",
 		"DaikyXendo/nvim-material-icon",
 	},
+	keys = {
+		-- Con 'toggle' abre si está cerrado, y lo cierra si está abierto
+		{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Neo-tree" },
+	},
 	config = function()
 		require("neo-tree").setup({
+			window = {
+				position = "left",
+				width = 25, -- Ancho compacto
+			},
 			filesystem = {
 				filtered_items = {
-					visible = false, -- Hide "filtered" items
-					hide_dotfiles = false, -- Show dotfiles (.env, .gitignore, etc.)
-					hide_gitignored = true, -- ✅ Respect .gitignore
-					never_show = { ".git" }, -- ✅ Never show .git
+					visible = false,
+					hide_dotfiles = false,
+					hide_gitignored = true,
+					never_show = { ".git" },
 				},
 			},
 		})

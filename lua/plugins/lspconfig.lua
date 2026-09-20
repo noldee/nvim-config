@@ -138,7 +138,15 @@ return {
 				},
 				tailwindcss = {},
 				marksman = {},
-				astro = {},
+				astro = {
+					init_options = {
+						typescript = {
+							tsdk = vim.fn.expand(
+								"~/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib"
+							),
+						},
+					},
+				},
 				svelte = {},
 				html = {},
 				eslint = {},

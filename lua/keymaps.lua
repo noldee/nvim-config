@@ -33,7 +33,18 @@ vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Toggle comment" 
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select all" })
 
 -------------------------------------------------
--- TOGGLETERM
+-- LIVE PREVIEW (Corregido)
+-------------------------------------------------
+local lp_open = false
+vim.keymap.set("n", "<leader>lv", function()
+	if lp_open then
+		vim.cmd("LivePreview close")
+	else
+		vim.cmd("LivePreview start")
+	end
+	lp_open = not lp_open
+end, { desc = "Toggle Live Preview" })
+
 -------------------------------------------------
 vim.keymap.set("n", "<leader>tr", ":ToggleTerm<CR>", { desc = "Toggle terminal (default)" })
 vim.keymap.set("n", "<leader>ts", ":ToggleTerm direction=horizontal<CR>", { desc = "Terminal horizontal" })
