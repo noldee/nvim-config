@@ -29,6 +29,9 @@ return {
 			astro = { "prettier" },
 			svelte = { "prettier" },
 			prisma = { "prismals" },
+			qml = { "qmlformat" },
+			-- java = { "google-java-format" },
+			java = { "jdtls" },
 		},
 		format_on_save = {
 			timeout_ms = 1000,

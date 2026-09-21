@@ -32,6 +32,7 @@ return {
 				"eslint",
 				"jsonls",
 				"prismals",
+				"jdtls",
 			},
 			automatic_enable = false, -- lo habilitamos nosotros manualmente abajo
 		},
@@ -152,6 +153,12 @@ return {
 				eslint = {},
 				jsonls = {},
 				prismals = {},
+				jdtls = {},
+				qmlls = {
+					cmd = { "qmlls6" },
+					filetypes = { "qml", "qmljs" },
+					single_file_support = true,
+				},
 				emmet_language_server = {
 					filetypes = {
 						"html",

@@ -20,6 +20,7 @@ return {
 			"go",
 			"bash",
 			"json",
+			"qmljs",
 		})
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = {
@@ -37,6 +38,8 @@ return {
 				"go",
 				"bash",
 				"json",
+				"qmljs",
+				"java",
 			},
 			callback = function()
 				vim.treesitter.start()
