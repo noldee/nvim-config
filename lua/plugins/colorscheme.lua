@@ -8,10 +8,9 @@ return {
 		},
 		config = function(_, opts)
 			require("tokyonight").setup(opts)
-			vim.cmd.colorscheme("tokyonight") -- ✅ aquí se activa
+			vim.cmd.colorscheme("tokyonight") -- ✅ tema activo al iniciar
 		end,
 	},
-	-- Los otros dos los dejas comentados o los borras
-	-- { "olimorris/onedarkpro.nvim", priority = 1000 },
-	-- { "webhooked/kanso.nvim", lazy = false, priority = 1000 },
+	{ "olimorris/onedarkpro.nvim", priority = 1000 },
+	{ "webhooked/kanso.nvim", lazy = false, priority = 1000 },
 }

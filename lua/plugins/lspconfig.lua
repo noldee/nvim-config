@@ -153,7 +153,13 @@ return {
 				eslint = {},
 				jsonls = {},
 				prismals = {},
-				jdtls = {},
+				jdtls = {
+					cmd = {
+						"jdtls",
+						"--jvm-arg=-Xms128m",
+						"--jvm-arg=-Xmx512m",
+					},
+				},
 				qmlls = {
 					cmd = { "qmlls6" },
 					filetypes = { "qml", "qmljs" },

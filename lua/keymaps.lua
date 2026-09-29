@@ -3,8 +3,9 @@ vim.cmd("let mapleader = ' '")
 -------------------------------------------------
 -- FILE EXPLORER (Neo-tree)
 -------------------------------------------------
-vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left toggle<CR>", { desc = "Toggle file explorer" })
-vim.keymap.set("n", "<leader>e", ":Neotree focus<CR>", { desc = "Focus file explorer" })
+-- Usamos las llamadas recomendadas de Lua que configuramos previamente
+vim.keymap.set("n", "<C-n>", "<cmd>Neotree toggle<cr>", { desc = "Toggle file explorer" })
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree focus<cr>", { desc = "Focus file explorer" })
 
 -------------------------------------------------
 -- TELESCOPE
@@ -33,7 +34,7 @@ vim.keymap.set("n", "<leader>/", "gcc", { remap = true, desc = "Toggle comment" 
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select all" })
 
 -------------------------------------------------
--- LIVE PREVIEW (Corregido)
+-- LIVE PREVIEW
 -------------------------------------------------
 local lp_open = false
 vim.keymap.set("n", "<leader>lv", function()
@@ -46,21 +47,23 @@ vim.keymap.set("n", "<leader>lv", function()
 end, { desc = "Toggle Live Preview" })
 
 -------------------------------------------------
+-- TOGGLETERM (Terminal Integrada)
+-------------------------------------------------
 vim.keymap.set("n", "<leader>tr", ":ToggleTerm<CR>", { desc = "Toggle terminal (default)" })
 vim.keymap.set("n", "<leader>ts", ":ToggleTerm direction=horizontal<CR>", { desc = "Terminal horizontal" })
 vim.keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=88<CR>", { desc = "Terminal vertical" })
 vim.keymap.set("n", "<leader>tf", ":ToggleTerm direction=float<CR>", { desc = "Terminal flotante" })
 
--- Terminales numeradas (independientes entre sí)
+-- Terminales numeradas
 vim.keymap.set("n", "<leader>t1", ":1ToggleTerm<CR>", { desc = "Terminal 1" })
 vim.keymap.set("n", "<leader>t2", ":2ToggleTerm<CR>", { desc = "Terminal 2" })
 vim.keymap.set("n", "<leader>t3", ":3ToggleTerm<CR>", { desc = "Terminal 3" })
 
--- Keymaps dentro del modo terminal (se aplican al buffer correcto automáticamente)
+-- Keymaps dentro del modo terminal
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "term://*toggleterm#*",
 	callback = function()
-		local opts = { buffer = 0 } -- 👈 0 = buffer actual, el que se acaba de abrir
+		local opts = { buffer = 0 }
 		vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
 		vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
 		vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
