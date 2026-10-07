@@ -33,6 +33,7 @@ return {
 				"jsonls",
 				"prismals",
 				"jdtls",
+				"vue-language_server",
 			},
 			automatic_enable = false, -- lo habilitamos nosotros manualmente abajo
 		},
